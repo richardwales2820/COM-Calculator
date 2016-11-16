@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>COM1000 Calculator</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+  <script type="text/javascript">
+    function UpdateInfo()
+    {
+      var e1grade = parseFloat(document.getElementById('exam1').value) || 0.0;
+      var e2grade = parseFloat(document.getElementById('exam2').value) || 0.0;
+      var jagrade = parseFloat(document.getElementById('ja').value) || 0.0;
+      var ecgrade = parseFloat(document.getElementById('ec').value) || 0.0;
+      var letter = document.getElementById('letter').value;
+      var pointsLeft = 0;
+      var sum = e1grade + e2grade + jagrade + ecgrade;
+
+      if (letter === 'A')
+      {
+        pointsLeft = 360 - sum;
+      }
+      else if (letter === 'B')
+      {
+        pointsLeft = 320 - sum;
+      }
+      else if (letter == 'C')
+      {
+        pointsLeft = 280 - sum;
+      }
+      else if (letter === 'D')
+      {
+        pointsLeft = 240 - sum;
+      }
+      else if (letter === 'F')
+      {
+        pointsLeft = 0;
+      }
+
+      document.getElementById('exam3').value = pointsLeft;
+    }
+  </script>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>COM 1000 Grade Calculator</h1>
+                <p class="lead">Enter you previous scores and select your desired grade</p>
+                <table class="table">
+                  <thead>
+                    <th>Exam 1</th>
+                    <th>Exam 2</th>
+                    <th>JA</th>
+                    <th>Extra Credit</th>
+                    <th>Final Letter Grade</th>
+                    <th>Exam 3</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input class="form-control" id="exam1" type="text" onChange="UpdateInfo();" /></td>
+                      <td><input class="form-control" id="exam2" type="text" onChange="UpdateInfo();" /></td>
+                      <td><input class="form-control" id="ja" type="text" onChange="UpdateInfo();" /></td>
+                      <td><input class="form-control" id="ec" type="text" onChange="UpdateInfo();" /></td>
+                      <td>
+                        <select class="form-control" id="letter" onChange="UpdateInfo();" >
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                          <option value="F">F</option>
+                      </select>
+                      </td>
+                      <td><input class="form-control" id="exam3" type="text" readonly/></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
